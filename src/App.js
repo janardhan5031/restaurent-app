@@ -1,8 +1,9 @@
-import { Fragment, useState } from "react";
+import {  useState } from "react";
 
 import Header from "./components/Layout/Header";
 import Meals from "./components/Meals/Meals";
 import Cart from "./components/Cart/Cart";
+import CartContextProvider from "./Store/cart-context-provider";
 
 function App() {
 
@@ -12,13 +13,14 @@ function App() {
     setIsCartOpen(!isCartOpen)
   }
 
-  return (<Fragment>
-    {isCartOpen && <Cart cartClose={ cartModelHandler} />}
-    <Header cartOpen={ cartModelHandler} />
-    <main>
-      <Meals />
-    </main>
-  </Fragment>
+  return (
+    <CartContextProvider>
+      {isCartOpen && <Cart cartClose={ cartModelHandler} />}
+      <Header cartOpen={ cartModelHandler} />
+      <main>
+        <Meals />
+      </main>
+    </CartContextProvider>
   );
 }
 
