@@ -8,9 +8,10 @@ import classes from './HeaderCartButton.module.css'
 const HeaderCartButton = (props) => {
 
     const cartCtx = useContext(CartContext)
+    // console.log('cartCtx in header cart button----',cartCtx)
 
     const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {
-        return curNumber + item.amount;     
+        return curNumber + Number(item.qty)   
     },0)
 
     return (<button className={classes.button} onClick={props.cartOpen } >
