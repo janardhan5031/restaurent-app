@@ -14,7 +14,7 @@ const MealItem = (props) => {
         e.preventDefault()
         const qty = document.getElementById(`${props.id}`).value;
 
-        cartCtx.addItem({ name: props.name, price: props.price, qty:qty, id:props.id+Date.now()})
+        cartCtx.addItem({ name: props.name, price: parseInt(props.price), qty:parseInt(qty), id:props.id+Date.now()})
     }
 
     return <span className={classes.meal} >

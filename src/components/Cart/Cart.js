@@ -1,23 +1,23 @@
-import React, { useContext} from 'react';
+import React, { Fragment, useContext} from 'react';
 
 import CartContext from '../../Store/cart-context';
-
+import CartItem from './CartItems/CartItem';
 import Modal from '../UI/Modal';
 import classes from './Cart.module.css';
 
 const Cart = (props) => {
 
     const cartCtx = useContext(CartContext)
-    console.log(cartCtx)
 
     const cartItems = <ul className={classes['cart-items']}>{cartCtx.items.map((item) => {
-        return <li key={item.id}>{item.name}</li>
+        // return <li key={item.id}>{item.name}</li>
+        return <Fragment key={item.id}> <CartItem item={ item } /> </Fragment>
     })
     }
     </ul>; 
 
     const TotalAmount = cartCtx.items.reduce((curVal, item) => {
-        
+
         return curVal+(item.price)*item.qty
     },0)
 
